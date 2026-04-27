@@ -1,0 +1,129 @@
+/**
+ * Block Editor Animations
+ * 
+ * Smooth animations for block operations:
+ * - Block entry/exit
+ * - Drag and drop
+ * - Selection states
+ */
+
+@keyframes blockEntry {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blockExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes dragOver {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Block animations */
+.block-enter {
+  animation: blockEntry 300ms ease-out forwards;
+}
+
+.block-exit {
+  animation: blockExit 300ms ease-in forwards;
+}
+
+.block-drag-over {
+  animation: dragOver 200ms ease-out forwards;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-fast {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-slow {
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Selection indicator */
+.block-selected {
+  position: relative;
+}
+
+.block-selected::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: rgb(59, 130, 246);
+  border-radius: 0 2px 2px 0;
+  animation: slideInFromLeft 200ms ease-out forwards;
+}
+
+/* Dark mode adjustments */
+.dark .block-drag-over {
+  animation: none;
+  background-color: rgba(59, 130, 246, 0.15);
+}
